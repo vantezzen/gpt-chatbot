@@ -1,0 +1,7 @@
+source_data/*
+!source_data/**/.gitkeep
+node_modules
+training_data/*
+!training_data/**/.gitkeep
+.env
+__pycache__

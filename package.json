@@ -1,0 +1,15 @@
+{
+  "name": "gpt-chatbot",
+  "version": "1.0.0",
+  "description": "This repository allows preparing data for training a GPT-4 model, training the model and run queries using a CLI.",
+  "main": "index.js",
+  "scripts": {
+    "add-markdown-data": "node training_data_creation/add_markdown_data.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^8.0.3"
+  }
+}
