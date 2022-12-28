@@ -15,15 +15,24 @@ class OpenAi:
   def get_index_query(self, query):
     return openai.Embedding.create(input=query, engine="text-embedding-ada-002")['data'][0]['embedding']
 
-  def complete(self, prompt, max_tokens=100):
+  def complete(self, prompt, max_tokens=255):
     completion = openai.Completion.create(
       model="text-davinci-003",
       prompt=prompt,
       max_tokens=max_tokens,
-      temperature=0.9,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0.6,
       stop=["\n", " Human:", " AI:"]
     )
     return completion['choices'][0]['text']
+    
+  def prepare_full_ai_query(self, query, matches):
+    finalQuery = """
+Answer the question as truthfully as possible using the provided context, and if the answer is not contained within the text below, tell it to the user
+
+===
+Context:
+"""
+    for match in matches:
+        finalQuery = f"{finalQuery}\n* {match['metadata']['text']}\n"
+
+    finalQuery = f"{finalQuery}\n===\nQ: {query}\nA:\n"
+    return finalQuery

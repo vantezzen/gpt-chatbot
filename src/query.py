@@ -14,7 +14,7 @@ index_query = openai.get_index_query(prompt)
 results = pinecone.search(index_query)
 print("Results: " + str(results))
 
-finalQuery = pinecone.prepare_full_ai_query(prompt, results)
+finalQuery = openai.prepare_full_ai_query(prompt, results)
 print("Final Query: " + finalQuery)
 
 response = openai.complete(finalQuery)

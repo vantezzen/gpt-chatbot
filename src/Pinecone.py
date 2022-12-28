@@ -30,15 +30,3 @@ class Pinecone:
   def search(self, query, k=10):
     return self.index.query([query], top_k=k, include_metadata=True)['matches']
 
-  def prepare_full_ai_query(self, query, matches):
-    finalQuery = """
-Answer the question as truthfully as possible using the provided context, and if the answer is not contained within the text below, say "I don't know."
-
-===
-Context:
-"""
-    for match in matches:
-        finalQuery = f"{finalQuery}\n* {match['metadata']['text']}\n"
-
-    finalQuery = f"{finalQuery}\n===\nQ: {query}\nA:\n"
-    return finalQuery
