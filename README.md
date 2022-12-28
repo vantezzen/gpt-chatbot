@@ -1,6 +1,6 @@
 # GPT Chatbot
 
-This repository allows preparing data for training a GPT-4 model, training the model and run queries using a CLI.
+This repository allows preparing data for training a GPT-3 model, training the model and run queries using a CLI.
 
 ## Setup
 
